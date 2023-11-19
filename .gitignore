@@ -1,3 +1,9 @@
+# secret OpenAI API key
+key.txt
+
+# outputs of the model
+outputs/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
