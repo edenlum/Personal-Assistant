@@ -114,6 +114,8 @@ class AssistantRun:
         thread_messages = self.client.beta.threads.messages.list(run.thread_id)
         last_message = thread_messages.data[0]
         print(color("Assistant: ", 'red') + last_message.content[0].text.value)
+        with open("conversation.json", "a") as f:
+            f.write(json.dumps(last_message.content[0].text.value))
     
 
 
@@ -121,7 +123,12 @@ if __name__ == "__main__":
 
     get_all_tools()
     
-    client = OpenAI(api_key=open("../key.txt").read().strip())
+    client = OpenAI(api_key=open("key.txt").read().strip())
+
+    conversation = client.files.create(
+        file=open("conversation.json", "rb"),
+        purpose='assistants'
+    )
 
     assistant = AssistantRun(
         client,
@@ -135,12 +142,14 @@ if __name__ == "__main__":
             {"type": "code_interpreter"},
             {"type": "retrieval"}] +
             get_all_tools(),
-        file_ids=[]
+        file_ids=[conversation.id]
     )
 
     while True:
         # print You: in color
         user_input = input(color("You: ", 'green'))
+        with open("conversation.json", "a") as f:
+            f.write(json.dumps(user_input))
         if user_input == "quit":
             break
         assistant.run(user_input)

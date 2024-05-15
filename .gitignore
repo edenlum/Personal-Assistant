@@ -4,6 +4,9 @@ key.txt
 # outputs of the model
 outputs/*
 
+# vscode
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

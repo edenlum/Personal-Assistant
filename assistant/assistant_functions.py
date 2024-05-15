@@ -214,10 +214,6 @@ edit_line_tool = {
                 "line_number",
                 "new_content"
             ]
-        },
-        "return": {
-            "type": "string",
-            "description": "The result of the line editing action."
         }
     }
 }
@@ -263,10 +259,6 @@ replace_text_tool = {
                 "search_string",
                 "replace_string"
             ]
-        },
-        "return": {
-            "type": "string",
-            "description": "The result of the replace action."
         }
     }
 }
@@ -310,10 +302,6 @@ delete_lines_tool = {
                 "start_line",
                 "end_line"
             ]
-        },
-        "return": {
-            "type": "string",
-            "description": "The result of the delete lines action."
         }
     }
 }
@@ -362,10 +350,6 @@ insert_lines_tool = {
                 "line_number",
                 "lines"
             ]
-        },
-        "return": {
-            "type": "string",
-            "description": "The result of the insert lines action."
         }
     }
 }
